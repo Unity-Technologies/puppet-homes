@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'homes::home', :type => :define do
-  
+
   context 'manage the users' do
 
     myuser = {
@@ -11,15 +11,15 @@ describe 'homes::home', :type => :define do
     describe 'ensure that the user and home directory exists' do
 
       let :title do "user exists" end
-      let :params do 
+      let :params do
         { 'user' =>  myuser }
       end
       it { should compile.with_all_deps }
-      
+
       it { should contain_user('testuser').with(
         'groups' => ['testgroup1', 'testgroup2']
       ) }
-      
+
       it { should contain_file('/home/testuser').with(
         'ensure' => 'directory',
         'owner'  => 'testuser',

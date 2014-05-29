@@ -5,30 +5,30 @@ describe 'homes defintion', :unless => UNSUPPORTED_PLATFORMS.include?(fact('osfa
   context 'valid user parameter' do
     it 'should work with no errors' do
       pp = <<-EOS
-      $myuser = { 
+      $myuser = {
         'testuser' => { 'shell' => '/bin/bash' }
       }
-      
+
       homes { 'testuser':
         user => $myuser
       }
       EOS
-      
+
       # Run it twice and test for idempotency
       apply_manifest(pp, :catch_failures => true)
       expect(apply_manifest(pp, :catch_failures => true).exit_code).to be_zero
-   
+
     end
-    
+
     describe user('testuser') do
       it { should exist }
     end
-        
+
     describe file('/home/testuser') do
       it { should be_directory }
     end
   end
-  
+
   context 'user ensure absent' do
     it 'should remove the user' do
       pp = <<-PP

@@ -23,7 +23,7 @@
 #
 #   homes::ssh::config { 'config for testuser':
 #     username => 'testuser',
-#     ssh_config_enteries => $entries
+#     ssh_config_entries => $entries
 #   }
 #
 define homes::ssh::config(
@@ -37,6 +37,9 @@ define homes::ssh::config(
     }
     'RedHat': {
       ensure_resource('package', 'ruby-augeas', { 'ensure' => 'installed' })
+    }
+    'FreeBSD': {
+      ensure_resource('package', 'rubygem-ruby-augeas', { 'ensure' => 'installed' })
     }
     default: {
       notify { "Can't install augeas libraries for ${::osfamily}": }
