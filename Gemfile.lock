@@ -78,12 +78,12 @@ GEM
       guard
       rake
     hashr (0.0.22)
-    hiera (1.3.2)
+    hiera (1.3.4)
       json_pure
     highline (1.6.21)
     inifile (2.0.2)
     json (1.8.1)
-    json_pure (1.8.1)
+    json_pure (2.8.1)
     launchy (2.4.2)
       addressable (~> 2.3)
     listen (2.7.1)
